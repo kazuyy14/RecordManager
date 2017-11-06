@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Record Manager</string>
+    <string name="addItem">追加</string>
+    <string name="delItem">全削除</string>
+</resources>
