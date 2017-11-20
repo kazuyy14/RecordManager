@@ -1,12 +1,17 @@
 package com.example.kazu.recordmanager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import java.util.ArrayList;
 
@@ -43,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(key, jsonAry.toString());
         editor.apply();
     }
-    
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
         myListView =(ListView)findViewById(R.id.myListView);
 
+        items = loadList(getApplicationContext(),"subject");
+        
+
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, items);
         myListView.setAdapter(arrayAdapter);
+
 
         findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
                 items.add("value");
                 arrayAdapter.notifyDataSetChanged();
+
+                saveList(getApplicationContext(),"subject",items);
+
 
 
             }
@@ -72,6 +86,24 @@ public class MainActivity extends AppCompatActivity {
 
                 items.clear();
                 arrayAdapter.notifyDataSetChanged();
+
+                saveList(getApplicationContext(),"subject",items);
+            }
+        });
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View view, final int pos, long id){
+                ListView listView = (ListView)parent;
+                String item = (String)listView.getItemAtPosition(pos);
+
+                new AlertDialog.Builder(parent.getContext()).setTitle("title").setMessage("message").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        items.remove(pos);
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                }).setNegativeButton("NO",null).show();
+
             }
         });
 
