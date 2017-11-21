@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         items.remove(pos);
                         arrayAdapter.notifyDataSetChanged();
+                        saveList(getApplicationContext(),"subject",items);
                     }
                 }).setNegativeButton("NO",null).show();
 
