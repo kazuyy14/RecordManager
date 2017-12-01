@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import java.util.ArrayList;
 
@@ -49,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,24 +69,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                items.add("value");
-                arrayAdapter.notifyDataSetChanged();
+                EditText editText = (EditText) findViewById(R.id.editText);
+                SpannableStringBuilder sp = (SpannableStringBuilder)editText.getText();
 
+                items.add(sp.toString());
+                arrayAdapter.notifyDataSetChanged();
                 saveList(getApplicationContext(),"subject",items);
 
+                editText.getEditableText().clear();
 
-
-            }
-        });
-
-        findViewById(R.id.delButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                items.clear();
-                arrayAdapter.notifyDataSetChanged();
-
-                saveList(getApplicationContext(),"subject",items);
             }
         });
 
@@ -96,7 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 ListView listView = (ListView)parent;
                 String item = (String)listView.getItemAtPosition(pos);
 
-                new AlertDialog.Builder(parent.getContext()).setTitle("title").setMessage("message").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                String point = items.get(pos);
+
+                new AlertDialog.Builder(parent.getContext()).setTitle("注意").setMessage(point + " を削除してもよろしいですか").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         items.remove(pos);
@@ -107,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        EditText editText = (EditText) findViewById(R.id.editText);
+        SpannableStringBuilder sp = (SpannableStringBuilder)editText.getText();
+
 
 
     }
