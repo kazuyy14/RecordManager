@@ -2,6 +2,7 @@ package com.example.kazu.recordmanager;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -86,14 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String point = items.get(pos);
 
-                new AlertDialog.Builder(parent.getContext()).setTitle("注意").setMessage(point + " を削除してもよろしいですか").setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        items.remove(pos);
-                        arrayAdapter.notifyDataSetChanged();
-                        saveList(getApplicationContext(),"subject",items);
-                    }
-                }).setNegativeButton("NO",null).show();
+                Intent intent = new Intent(getApplication(),DetailActivity.class);
+                startActivity(intent);
 
             }
         });

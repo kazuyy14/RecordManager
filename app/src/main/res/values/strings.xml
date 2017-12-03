@@ -2,6 +2,7 @@
     <string name="app_name">Record Manager</string>
     <string name="addItem">追加</string>
     <string name="delItem">全削除</string>
+    <string name="delRecord">削除</string>
     <string name="back">戻る</string>
     <string name="plus">＋</string>
     <string name="minus">ー</string>
