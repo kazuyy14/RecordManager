@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                EditText editText = (EditText) findViewById(R.id.editText);
+                EditText editText = (EditText) findViewById(R.id.addRecord);
                 SpannableStringBuilder sp = (SpannableStringBuilder)editText.getText();
 
                 items.add(sp.toString());
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        EditText editText = (EditText) findViewById(R.id.editText);
+        EditText editText = (EditText) findViewById(R.id.addRecord);
         SpannableStringBuilder sp = (SpannableStringBuilder)editText.getText();
 
 

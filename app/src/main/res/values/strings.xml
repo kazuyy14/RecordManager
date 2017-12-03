@@ -2,4 +2,15 @@
     <string name="app_name">Record Manager</string>
     <string name="addItem">追加</string>
     <string name="delItem">全削除</string>
+    <string name="back">戻る</string>
+    <string name="plus">＋</string>
+    <string name="minus">ー</string>
+    <string name="textAttendance">出席</string>
+    <string name="memo">メモ</string>
+    <string name="unit">単位</string>
+    <string-array name="list">
+        <item>履修中</item>
+        <item>履修済</item>
+        <item>再履修</item>
+    </string-array>
 </resources>
