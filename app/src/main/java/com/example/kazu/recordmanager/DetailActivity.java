@@ -1,5 +1,7 @@
 package com.example.kazu.recordmanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -9,9 +11,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
 import io.realm.Realm;
 import io.realm.RealmList;
 
@@ -174,6 +173,15 @@ public class DetailActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new AlertDialog.Builder(DetailActivity.this).setTitle("注意").setMessage("削除してもよろしいですか").setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        realm.beginTransaction();
+                        detail.deleteFromRealm();
+                        realm.commitTransaction();
+                        finish();
+                    }
+                }).setNegativeButton("NO",null).show();
 
             }
         });
