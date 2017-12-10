@@ -1,7 +1,6 @@
 package com.example.kazu.recordmanager;
 
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.RealmList;
 
@@ -49,7 +51,7 @@ public class DetailActivity extends AppCompatActivity {
         EditText editText2 = (EditText) findViewById(R.id.freeSpace) ;
         editText2.setText(detail.getMemo());
 
-
+        //変更時のデータのrealmの更新
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -133,7 +135,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
-
+        //戻るボタンの処理
         View backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +144,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //プラスボタンの処理
         View plus = findViewById(R.id.plus);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +157,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //マイナスボタンの処理
         View minus = findViewById(R.id.minus);
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,6 +168,17 @@ public class DetailActivity extends AppCompatActivity {
                 textView.setText(Integer.toString(detail.getAttendanceCount()));
             }
         });
+
+        //削除ボタンの処理
+        View deleteButton = findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
     }
 

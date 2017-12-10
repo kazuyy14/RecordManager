@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     RealmList<SubjectDetail> list = null;
     ArrayAdapter<String> arrayAdapter = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,11 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        EditText editText = (EditText) findViewById(R.id.addRecord);
-        SpannableStringBuilder sp = (SpannableStringBuilder)editText.getText();
-
-
-
     }
 
     @Override
@@ -108,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
             items.add(s.getName());
         }
         arrayAdapter.notifyDataSetChanged();
-
-
 
     }
 

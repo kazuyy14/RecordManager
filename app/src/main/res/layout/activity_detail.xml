@@ -31,7 +31,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="44dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="numberDecimal"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/memo"
         app:layout_constraintEnd_toStartOf="@+id/plus"
         app:layout_constraintHorizontal_bias="0.481"
@@ -47,6 +49,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.976"
@@ -135,26 +138,28 @@
         android:layout_marginTop="28dp"
         android:text="@string/unit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delete" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
 
     <EditText
         android:id="@+id/freeSpace"
-        android:layout_width="373dp"
-        android:layout_height="179dp"
+        android:layout_width="360dp"
+        android:layout_height="178dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/frame_style"
         android:ems="10"
+        android:gravity="top|left"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/unitScore"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/memo"
-        app:layout_constraintTop_toBottomOf="@+id/memo"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memo" />
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/deleteButton"
         android:layout_width="77dp"
         android:layout_height="45dp"
         android:layout_marginEnd="16dp"
